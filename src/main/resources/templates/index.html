@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ikano-style onboarding — Start</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<header class="site">
+    <div class="brand">IKANO<span>·</span>onboarding sample</div>
+</header>
+<main>
+    <div class="card">
+        <h1>Start a customer onboarding application</h1>
+        <p class="lead">Choose a market and a customer type. This is a sample app for the Java engineering
+            take-home task — all external checks (identity, registry, sanctions, credit, bank account)
+            are deterministic mocks. See the README for the demo values that trigger each outcome.</p>
+
+        <form method="post" th:action="@{/onboarding/start}">
+            <div class="field">
+                <label for="country">Country</label>
+                <select id="country" name="country" required="required">
+                    <option th:each="c : ${countries}" th:value="${c}" th:text="${c}"></option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="customerType">Account type</label>
+                <select id="customerType" name="customerType" required="required">
+                    <option th:each="t : ${customerTypes}" th:value="${t}" th:text="${t}"></option>
+                </select>
+            </div>
+            <button type="submit">Start application</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

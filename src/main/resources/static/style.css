@@ -1,0 +1,169 @@
+:root {
+    --red: #e2001a;
+    --ink: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg: #fafafa;
+    --ok: #15803d;
+    --warn: #b45309;
+    --bad: #b91c1c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.5;
+}
+
+header.site {
+    background: var(--ink);
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header.site .brand {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+header.site .brand span {
+    color: var(--red);
+}
+
+main {
+    max-width: 780px;
+    margin: 2rem auto;
+    padding: 0 1.5rem 3rem;
+}
+
+.card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+h1 { font-size: 1.5rem; margin-top: 0; }
+h2 { font-size: 1.15rem; }
+p.lead { color: var(--muted); }
+
+.progress {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.progress .step {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: white;
+}
+
+.progress .step.done { background: #ecfdf5; border-color: #a7f3d0; color: var(--ok); }
+.progress .step.current { background: #fef2f2; border-color: var(--red); color: var(--red); font-weight: 600; }
+
+.field { margin-bottom: 1.1rem; }
+
+.field label { display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.92rem; }
+
+.field .help { color: var(--muted); font-size: 0.8rem; margin-top: 0.25rem; }
+
+.field .error { color: var(--bad); font-size: 0.82rem; margin-top: 0.25rem; display: block; }
+
+input[type=text], input[type=number], select, textarea {
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: white;
+}
+
+textarea { min-height: 5rem; }
+
+.checkbox-row { display: flex; align-items: flex-start; gap: 0.5rem; }
+.checkbox-row input { margin-top: 0.25rem; }
+.checkbox-row label { font-weight: 500; }
+
+button, .btn {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.4rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button.secondary, .btn.secondary {
+    background: white;
+    color: var(--ink);
+    border: 1px solid var(--border);
+}
+
+.banner {
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+}
+
+.banner.error { background: #fef2f2; border: 1px solid #fecaca; color: var(--bad); }
+.banner.ok { background: #ecfdf5; border: 1px solid #a7f3d0; color: var(--ok); }
+.banner.warn { background: #fffbeb; border: 1px solid #fde68a; color: var(--warn); }
+.banner.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; }
+
+.decision {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0.25rem 0 0.5rem;
+}
+
+.decision.APPROVED { color: var(--ok); }
+.decision.MANUAL_REVIEW { color: var(--warn); }
+.decision.REJECTED { color: var(--bad); }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th, td { text-align: left; padding: 0.5rem 0.4rem; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 600; }
+
+.tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.tag.SUCCESS { background: #ecfdf5; color: var(--ok); }
+.tag.MANUAL_REVIEW { background: #fffbeb; color: var(--warn); }
+.tag.FAIL { background: #fef2f2; color: var(--bad); }
+
+.resume-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    word-break: break-all;
+}
+
+.actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
