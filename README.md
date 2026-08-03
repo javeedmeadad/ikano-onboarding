@@ -5,6 +5,11 @@ markets (Sweden, Spain, Poland) and two customer types (private individual, busi
 mocked KYC/KYB, sanctions, credit and bank-account checks, and a resumable, audited application
 lifecycle. Built for the Ikano Java engineering take-home task.
 
+**→ [Architecture & flow diagrams](docs/DIAGRAMS.md)** — Mermaid diagrams covering system
+architecture, class/UML views of the flow engine and integration layer, the data model (ERD),
+sequence diagrams for start/submit/decide/resume/retry, the application state machine, and the
+shape of the private vs. business onboarding journeys.
+
 ## Stack
 
 - Java 17 (LTS). The task suggests any supported LTS release; 21 wasn't available in this

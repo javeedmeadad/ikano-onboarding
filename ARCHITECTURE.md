@@ -1,5 +1,8 @@
 # Architecture note
 
+For diagrams (system architecture, class/UML, ERD, sequence diagrams, state machine, flow shape)
+see **[docs/DIAGRAMS.md](docs/DIAGRAMS.md)**. This note is the prose companion.
+
 ## Goal
 
 The brief's explicit "good senior signal" is: adding a country, a customer type, or a
