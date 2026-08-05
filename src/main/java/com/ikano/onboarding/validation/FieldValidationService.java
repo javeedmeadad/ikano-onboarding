@@ -22,6 +22,9 @@ public class FieldValidationService {
 
         for (FieldDefinition field : fields) {
             String value = submitted.getOrDefault(field.name(), "");
+            if (value == null) {
+                value = "";
+            }
 
             if (field.type() == FieldType.CHECKBOX) {
                 boolean checked = "true".equalsIgnoreCase(value) || "on".equalsIgnoreCase(value);

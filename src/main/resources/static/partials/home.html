@@ -1,0 +1,30 @@
+<div class="card" ng-if="vm.loading">
+    <p class="lead">Loading&hellip;</p>
+</div>
+
+<div ng-if="!vm.loading">
+    <div class="card">
+        <h1>Start an onboarding application</h1>
+        <p class="lead">Pick a market and an account type. Each combination runs its own flow and checks.</p>
+
+        <div class="banner error" ng-if="vm.error">{{ vm.error }}</div>
+
+        <div class="field">
+            <label for="country">Country</label>
+            <select id="country" ng-model="vm.selection.country"
+                    ng-options="c as c for c in vm.countries"></select>
+        </div>
+
+        <div class="field">
+            <label for="customerType">Account type</label>
+            <select id="customerType" ng-model="vm.selection.customerType"
+                    ng-options="t as t for t in vm.customerTypes"></select>
+        </div>
+
+        <div class="actions">
+            <button type="button" ng-click="vm.start()" ng-disabled="vm.starting">
+                {{ vm.starting ? 'Starting…' : 'Start application' }}
+            </button>
+        </div>
+    </div>
+</div>

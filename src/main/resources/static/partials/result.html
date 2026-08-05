@@ -1,0 +1,71 @@
+<div class="card" ng-if="vm.loading">
+    <p class="lead">Loading&hellip;</p>
+</div>
+
+<div class="banner error" ng-if="vm.error">{{ vm.error }}</div>
+
+<div ng-if="!vm.loading && vm.summary">
+
+    <div class="card">
+        <p class="lead">
+            {{ vm.summary.application.country }} / {{ vm.summary.application.customerType }}
+            &mdash; Application ID: {{ vm.summary.application.id }}
+        </p>
+        <div class="decision" ng-class="vm.summary.application.finalDecision">
+            {{ vm.summary.application.finalDecision }}
+        </div>
+        <p>{{ vm.summary.application.decisionReason }}</p>
+        <a class="btn secondary" href="#/">Start a new application</a>
+    </div>
+
+    <div class="card">
+        <h2>Checks performed</h2>
+        <table>
+            <tr>
+                <th>Check</th>
+                <th>Outcome</th>
+                <th>Detail</th>
+                <th>Request ID</th>
+                <th>Checked at</th>
+            </tr>
+            <tr ng-repeat="r in vm.summary.integrationResults">
+                <td>{{ r.integrationType }}</td>
+                <td><span class="tag" ng-class="r.outcome">{{ r.outcome }}</span></td>
+                <td>{{ r.detailCode }}</td>
+                <td>{{ r.requestId }}</td>
+                <td>{{ r.checkedAt }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Audit trail</h2>
+        <table>
+            <tr>
+                <th>Event</th>
+                <th>Description</th>
+                <th>Request ID</th>
+                <th>When</th>
+            </tr>
+            <tr ng-repeat="a in vm.summary.auditTrail">
+                <td>{{ a.eventType }}</td>
+                <td>{{ a.description }}</td>
+                <td>{{ a.requestId }}</td>
+                <td>{{ a.occurredAt }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Submitted answers</h2>
+        <div ng-repeat="entry in vm.stepDataEntries" style="margin-bottom:1rem;">
+            <h3 style="margin-bottom:0.3rem;font-size:0.95rem;">{{ entry.title }}</h3>
+            <table>
+                <tr ng-repeat="row in entry.rows track by row.key">
+                    <td>{{ row.key }}</td>
+                    <td>{{ row.value }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

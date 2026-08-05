@@ -156,7 +156,7 @@ public class OnboardingService {
 
         return new StepPageModel(app.getId(), app.getStatus(), app.getCountry(), app.getCustomerType(),
                 flow.steps(), completedKeys, flow.indexOf(stepKey), step, previousValues, Map.of(),
-                failureMessage, retryable, "/resume/" + app.getResumeToken(), reviewData);
+                failureMessage, retryable, "/#/resume/" + app.getResumeToken(), reviewData);
     }
 
     private Map<String, Map<String, String>> reviewData(UUID applicationId, FlowDefinition flow) {

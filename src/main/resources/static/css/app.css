@@ -31,10 +31,16 @@ header.site {
 header.site .brand {
     font-weight: 700;
     letter-spacing: 0.02em;
+    color: white;
+    text-decoration: none;
 }
 
 header.site .brand span {
     color: var(--red);
+}
+
+[ng-cloak], .ng-cloak {
+    display: none !important;
 }
 
 main {

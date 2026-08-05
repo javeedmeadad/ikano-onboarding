@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="onboardingApp" ng-cloak>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ikano onboarding sample</title>
+    <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+<header class="site">
+    <a class="brand" href="#/">IKANO<span>&middot;</span>onboarding sample</a>
+</header>
+<main>
+    <div ng-view></div>
+</main>
+
+<script src="js/vendor/angular.min.js"></script>
+<script src="js/vendor/angular-route.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services/onboardingApi.js"></script>
+<script src="js/controllers/homeController.js"></script>
+<script src="js/controllers/stepController.js"></script>
+<script src="js/controllers/resultController.js"></script>
+<script src="js/controllers/resumeController.js"></script>
+</body>
+</html>

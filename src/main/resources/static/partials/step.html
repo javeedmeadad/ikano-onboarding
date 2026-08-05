@@ -1,0 +1,84 @@
+<div class="card" ng-if="vm.loading">
+    <p class="lead">Loading&hellip;</p>
+</div>
+
+<div class="banner error" ng-if="vm.error">{{ vm.error }}</div>
+
+<div ng-if="!vm.loading && vm.page">
+
+    <div class="progress">
+        <span class="step" ng-class="s.cssClass" ng-repeat="s in vm.progressSteps track by s.key">
+            {{ s.title }}
+        </span>
+    </div>
+
+    <div class="card">
+        <h1>{{ vm.page.step.title }}</h1>
+        <p class="lead">{{ vm.page.country }} / {{ vm.page.customerType }} &mdash; {{ vm.page.step.description }}</p>
+
+        <div class="banner error" ng-if="vm.page.integrationFailureMessage">
+            <strong>{{ vm.page.retryable ? 'Temporary issue — please retry: ' : 'Check failed: ' }}</strong>
+            <span>{{ vm.page.integrationFailureMessage }}</span>
+        </div>
+
+        <div ng-if="vm.page.step.reviewStep">
+            <h2>Your answers so far</h2>
+            <div ng-repeat="entry in vm.reviewEntries" style="margin-bottom:1rem;">
+                <h3 style="margin-bottom:0.3rem;font-size:0.95rem;">{{ entry.title }}</h3>
+                <table>
+                    <tr ng-repeat="row in entry.rows track by row.key">
+                        <td>{{ row.key }}</td>
+                        <td>{{ row.value }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <form name="stepForm" ng-submit="vm.submit()" novalidate>
+
+            <div class="field" ng-repeat="field in vm.page.step.fields track by field.name">
+
+                <div ng-if="field.type === 'CHECKBOX'" class="checkbox-row">
+                    <input type="checkbox" id="{{ field.name }}"
+                           ng-model="vm.values[field.name]"
+                           ng-true-value="'true'" ng-false-value="'false'"/>
+                    <label for="{{ field.name }}">{{ field.label }}</label>
+                </div>
+
+                <div ng-if="field.type !== 'CHECKBOX'">
+                    <label for="{{ field.name }}">{{ field.label }}</label>
+
+                    <input ng-if="field.type === 'TEXT'" type="text"
+                           id="{{ field.name }}" ng-model="vm.values[field.name]"/>
+
+                    <input ng-if="field.type === 'NUMBER'" type="number" step="any"
+                           id="{{ field.name }}" ng-model="vm.values[field.name]"/>
+
+                    <select ng-if="field.type === 'SELECT'" id="{{ field.name }}"
+                            ng-model="vm.values[field.name]">
+                        <option value="">Select&hellip;</option>
+                        <option ng-repeat="opt in field.options" value="{{ opt }}">{{ opt }}</option>
+                    </select>
+
+                    <textarea ng-if="field.type === 'TEXTAREA'"
+                              id="{{ field.name }}" ng-model="vm.values[field.name]"></textarea>
+                </div>
+
+                <div class="help" ng-if="field.helpText">{{ field.helpText }}</div>
+                <span class="error" ng-if="vm.page.fieldErrors[field.name]">{{ vm.page.fieldErrors[field.name] }}</span>
+            </div>
+
+            <div class="actions">
+                <button type="submit" ng-disabled="vm.submitting">
+                    {{ vm.submitting ? 'Please wait…' : vm.buttonLabel() }}
+                </button>
+                <a class="btn secondary" href="#/">Start over</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="resume-box">
+        Dropping off? Save this link to resume later (valid 24 hours):<br/>
+        <a href="{{ vm.page.resumeUrl }}">{{ vm.page.resumeUrl }}</a>
+    </div>
+</div>

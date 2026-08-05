@@ -1,0 +1,9 @@
+<div class="card" ng-if="vm.loading">
+    <p class="lead">Resuming your application&hellip;</p>
+</div>
+
+<div class="card" ng-if="!vm.loading">
+    <h1>Resume link</h1>
+    <div class="banner error">{{ vm.reason }}</div>
+    <a class="btn secondary" href="#/">Start a new application</a>
+</div>
